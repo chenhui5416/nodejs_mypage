@@ -1,15 +1,40 @@
 var express = require('express');
 var path = require('path');
 var bodyParser = require('body-parser');
+var cookieParser = require('cookie-parser');
+var session = require('express-session');
 var app = express();
 var fs = require('fs');
-
+var loginCheck = require('./mymodule/login-check')
 app.set('views', __dirname + '/views');
-app.engine('html', require('ejs').renderFile);
+app.set('view engine', 'ejs');
 app.use(bodyParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.cookieParser('chenhui5416'));
+app.use(session());
 
+app.get('/logout', function(req, res){
+  req.session.destroy(function(){
+    res.redirect('/');
+  });
+});
+app.post('/login', function(req, res){
+  	loginCheck.authenticate(req.body.username, req.body.password,function(data){
+  		if(data){
+	  		req.session.user = "admin";
+  			req.session.success = "admin";
+  			res.redirect('/')
+  		}else{
+  			res.send("<h1>管理员密码错误！请不要乱来！</h1>")
+  		}
+  	});
+});
+
+app.get('/login',function(req,res){
+	res.render('login.ejs');
+})
 app.get('/',function(req,res){
+	console.log(req.session)
 	var p = {title:'chenhui'}
 	res.render('index.ejs',p);
 })
@@ -33,3 +58,4 @@ app.get('/blog/:name',function(req,res){
 })
 
 app.listen(9001);
+
