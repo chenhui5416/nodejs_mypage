@@ -1,0 +1,15 @@
+{
+    "name": "bae-nodejs",
+    "version": "1.0.0",
+    "author": "bae",
+    "description": "The first bae nodejs app!",
+    "scripts": {
+        "start": "node server.js"
+    },
+    "dependencies": {
+    	"express": "3.x",
+    	"body-parser":"1.0.2",
+    	"ejs":"1.0.0"
+    }
+}
+
