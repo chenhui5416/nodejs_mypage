@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+  <head>
+  	<title>编辑页</title>
+  	<link rel="stylesheet" type="text/css" href="edit.css">
+  </head>
+  <body>
+  	<header>
+      <a href="#">飞天小猪猪</a>
+      <input placeholder="search" id="search" type="text">
+    </header>
+  	<section>
+      <aside id="textlist">
+        ddd
+      </aside>
+      <article>
+        <form method="POST" action="/editpost" id="editform">
+          <p>
+            <label for="texttype">归类:</label>
+            <input type="text" name="texttype">
+            <label for="textname">文章名字:</label>
+            <input type="text" name="textname">
+          </p>
+          <p>
+            <label for="zhaiyao">摘要:</label>
+          </p>
+          <p>
+            <textarea name="zhaiyao" rows="3"></textarea>
+          </p>
+          <p>
+            <label for="textcon">内容:</label>
+          </p>
+          <p>
+            <textarea name="textcon" rows="35"></textarea>
+          </p>
+          <input type="submit" value="发布">
+        </form>
+      </article>
+  	</section>
+  </body>
+</html>

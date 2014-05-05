@@ -23,12 +23,23 @@ app.post('/login', function(req, res){
   		if(data){
 	  		req.session.user = "admin";
   			req.session.success = "admin";
-  			res.redirect('/')
+  			res.redirect('/edit')
   		}else{
   			res.send("<h1>管理员密码错误！请不要乱来！</h1>")
   		}
   	});
 });
+app.post('/editpost', function(req, res){
+  	if(req.session.user){
+  		console.log(req.body.textname)
+  		res.send(req.body);
+  	}else{
+  		res.send("<h1>你不是管理员！不给你发帖子！</h1>")
+  	}
+});
+app.get('/edit',loginCheck.restrict,function(req,res){
+	res.render('edit.ejs');
+})
 
 app.get('/login',function(req,res){
 	res.render('login.ejs');

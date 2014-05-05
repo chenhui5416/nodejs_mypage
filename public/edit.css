@@ -42,23 +42,35 @@ body>header>a{
 }
 body>section{
 	margin:20px;
-	text-align: center;
 }
-body>section>form{
-	width: 40em;
-	margin: 0px auto;
+body>section>aside{
+	width: 20%;
+	float: left;
+	margin-left: 3%; 
 	background-color: white;
 	box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3);
-	padding:10px;
-	color: #00a5c5;
+	padding: 5px
+}
+body>section>article{
+	width: 65%;
+	float: left;
+	margin-left: 3%; 
+	padding: 5px;
+	background-color: white;
+	box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3);
+}
+#editform{
+	padding: 10px;
+	line-height: 16px;
+	font-size: 14px;
+}
+#editform label{
 	font-weight: bold;
+	font-size: 16px;
 }
-body>section>form>fieldset{
-	border: 0px;
-	font-size: 1.6em;
-}
-body>section>form>fieldset>legend{
-	font-size: 1.3em;
+#editform textarea{
+	width: 80%;
+	resize: vertical;
 }
 input[type='submit']{
     background-color: #00a5c5;

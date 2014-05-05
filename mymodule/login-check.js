@@ -16,6 +16,6 @@ exports.restrict = function (req,res,next){
   		next();
   	} else {
   	  	req.session.error = 'Access denied!';
-   	  	res.redirect('/login');
+   	  	res.send('<h1>不要乱来好不好，只有管理员可以进入编辑页面好不好，你想进入，那就登录啊！</h1>');
   	}
 };
