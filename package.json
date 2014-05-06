@@ -1,17 +1,14 @@
 {
-    "name": "bae-nodejs",
+    "name": "nodejs_mypage",
     "version": "1.0.0",
-    "author": "bae",
-    "description": "The first bae nodejs app!",
-    "scripts": {
-        "start": "node server.js"
-    },
+    "author": "chenhui",
+    "description": "the nodejs_mypage",
     "dependencies": {
         "express": "3.x",
         "body-parser":"1.0.2",
         "ejs":"1.0.0",
         "cookie-parser":"1.0.1",
-        "name":"1.0.4"
+        "express-session":"1.0.4"
     }
 }
 
