@@ -12,16 +12,12 @@
 	background: #eeeeee;
 }
 .blognav{
-	padding-top: 0.5em;
-	padding-top: 0.5rem;
-	padding-left: 0.5em;
-	padding-left: 0.5rem;
-	/*height: 9rem;*/
+	padding: 1em 1em 0em 1em;
 }
 
 .blognav>header>a{
-	font-size: 2.0em;
-	font-size: 2.0rem;
+	font-size: 1.8em;
+	font-size: 1.8rem;
 	font-weight: bold;
 	color: #00a5c5;
 	text-decoration: none;
@@ -30,8 +26,8 @@
 	color: #000000;
 }
 .blognav>div{
-	font-size: 1.4em;
-	font-size: 1.4rem;
+	font-size: 1.2em;
+	font-size: 1.2rem;
 }
 .blogcon{
 	font-size: 1.2em;
@@ -114,4 +110,12 @@ a{
 	color: inherit;
 	text-decoration: none;
 	display: block;
+}
+#author ul{
+	list-style-type: none;
+	padding: 0px;
+	color: #00a5c5;
+}
+#author a{
+	display: inline;
 }

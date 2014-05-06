@@ -1,6 +1,6 @@
 var fs = require('fs');
-exports.getBlogs = function(fn){
-  fs.readFile('jsons/blog.json',function(err,data){
+exports.getBlogs = function(dataUrl,fn){
+  fs.readFile(dataUrl,function(err,data){
     if(err) throw err;
     if(fn){
  	  fn(data.toString());
@@ -38,3 +38,9 @@ exports.updateBlogs = function(blog,hash,fn){
   	})
   });
 };
+exports.updateIPS = function(ip){
+  ip+=" | ";
+  fs.appendFile('jsons/ips.txt',ip,function(err){
+    if(err) throw err;
+  })
+}

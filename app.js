@@ -32,14 +32,21 @@ app.get('/login',function(req,res){
 	res.render('login.ejs');
 })
 app.get('/',function(req,res){
+  console.log(req.ip);
+  dataGen.updateIPS(req.ip);
 	res.render('index.ejs');
 })
 
 app.get('/blog',function(req,res){
-  dataGen.getBlogs(function(data){
+  dataGen.getBlogs('jsons/blog.json',function(data){
     res.send(data);
   })
 })
+app.get('/author',function(req,res){
+  dataGen.getBlogs('jsons/aboutme.json',function(data){
+    res.send(data);
+  })
+});
 
 app.get('/blog/:name',function(req,res){
 	var name = req.params.name,blogUrl ='jsons/cn_hash_';

@@ -1,20 +1,50 @@
-function gennav(data,page){
-  var innerHTML='',arr = data.con,se = document.getElementById('maincon');
-  var start,end;
-  start = 6*(page-1);
-  end = 6*(page)>arr.length?arr.length:6*(page);
-  for(var i=start;i<end;i++){
-    var title,zy,hash;
-    title=arr[i].title;
-    hash = arr[i].hash;
-    zy=arr[i].chaiyao;
-    innerHTML += '<article class="blognav"><header><a title="'+title+'"href="#/blog/'+hash+'">'+title+'</a></header><div><p>'+zy+'</p></div></article>'
+function noHashInit(page){
+  gennav(page);
+  genAuthodMes();
+}
+function genAuthodMes(){
+  var xhr = new XMLHttpRequest();
+  xhr.open('get','/author',true);
+  xhr.onreadystatechange = function(){
+    if(xhr.readyState==4&&xhr.status==200){
+      var data ,se ,innerHTML;
+      data = JSON.parse(xhr.responseText);
+      se = document.getElementById('author');
+      innerHTML = '<ul>';
+      for(var tag in data){
+        innerHTML+='<li>'+tag+':'+data[tag]+'</li>';
+      }
+      innerHTML +='</ul>';
+      se.innerHTML = innerHTML;
+    }
   }
-  se.innerHTML = innerHTML;
-  alist = se.getElementsByTagName('a');
-  genPageList(arr.length,page);
+  xhr.send();
 }
 
+function gennav(page){
+  var xhr = new XMLHttpRequest();
+  xhr.open('get','/blog',true);
+  xhr.onreadystatechange = function(){
+    if(xhr.readyState==4&&xhr.status==200){
+      var data = JSON.parse(xhr.responseText);
+      var innerHTML='',arr = data.con,se = document.getElementById('maincon');
+      var start,end;
+      start = 6*(page-1);
+      end = 6*(page)>arr.length?arr.length:6*(page);
+      for(var i=start;i<end;i++){
+        var title,zy,hash;
+        title=arr[i].title;
+        hash = arr[i].hash;
+        zy=arr[i].chaiyao;
+        innerHTML += '<article class="blognav"><header><a title="'+title+'"href="#/blog/'+hash+'">'+title+'</a></header><div><p>'+zy+'</p></div></article>'
+      }
+      se.innerHTML = innerHTML;
+      alist = se.getElementsByTagName('a');
+      genPageList(arr.length,page);
+    }
+  } 
+  xhr.send();
+}
 function getBlog(hr){
   var xhr = new XMLHttpRequest();
   var html="";
@@ -31,7 +61,6 @@ function getBlog(hr){
     }
   }
   xhr.send();
-
   var xhr1 = new XMLHttpRequest();
   xhr1.open('get','/blog',true);
   xhr1.onreadystatechange = function(){
@@ -44,17 +73,6 @@ function getBlog(hr){
   return html;
 }
 
-function noHashInit(page){
-  var xhr = new XMLHttpRequest();
-  xhr.open('get','/blog',true);
-  xhr.onreadystatechange = function(){
-    if(xhr.readyState==4&&xhr.status==200){
-      var data = JSON.parse(xhr.responseText);
-      gennav(data,page); 
-    }
-  } 
-  xhr.send();
-}
 function genPageList(count,page){
   page = Number(page);    //avoid the page+1 use string add method
   var ulCont = document.getElementById('pagelist'),innerHTML="<li>Pre</li>";
