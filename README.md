@@ -1,7 +1,7 @@
 nojs_mypage
 ===========
 
-项目说明，这是一个个人blog站点开发，使用nodejs，但又比较特别哦！具体日后补上。可以查看<a href="http://chenhui5416.duapp.com/">chenhui5416.duapp.com</a> 。
+项目说明，这是一个个人blog站点开发，使用nodejs！具体日后补上。可以查看<a href="http://chenhui5416.duapp.com/">chenhui5416.duapp.com</a> 不一定最新更新。
 
 还在开发中！
 

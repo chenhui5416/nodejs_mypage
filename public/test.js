@@ -1,7 +1,6 @@
 function gennav(data,page){
   var innerHTML='',arr = data.con,se = document.getElementById('maincon');
   var start,end;
-
   start = 6*(page-1);
   end = 6*(page)>arr.length?arr.length:6*(page);
   for(var i=start;i<end;i++){

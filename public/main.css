@@ -115,16 +115,3 @@ a{
 	text-decoration: none;
 	display: block;
 }
-.btn{
-    background-color: #00a5c5;
-    color: white;
-    height: 30px;
-    width: 80px;
-    border: 2px solid #00A1C2;
-    border-radius: 5px;
-    box-shadow: 1px 2px 3px #000000;
-    font-weight: bold;
-}
-.btn:hover{
-    background-color: #05D6FF;
-}
