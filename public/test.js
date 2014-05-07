@@ -1,7 +1,3 @@
-function noHashInit(page){
-  gennav(page);
-  genAuthodMes();
-}
 function genAuthodMes(){
   var xhr = new XMLHttpRequest();
   xhr.open('get','/author',true);

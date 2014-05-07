@@ -5,7 +5,7 @@
  * @type {[type]}
  */
 var http = require('http');
-var bcs = require('./mymodule/bcs_data');
+var bcs = require('./bcs_data');
 var mpath = bcs.gensign(accessKey,secrectKey,flag,method,bucket,object,time,ip,size);
 mpath = mpath.path;
 var opts={

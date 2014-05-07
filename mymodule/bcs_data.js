@@ -4,8 +4,6 @@
  */
 var crypto = require('crypto');
 exports.gensign = function(accessKey,secrectKey,flag,method,bucket,object,time,ip,size){
-	// var accessKey = 'M1crH8h0U0U62z76KPStEsfe';
-	// var secrectKey = 'YfGPAGh2mbImd367L3IWalpDhOnk5DUF';
 	var hash,signature,sign,path;
 	var content= flag + '\n'
           + 'Method='+method + '\n'

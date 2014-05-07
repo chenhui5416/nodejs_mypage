@@ -1,9 +1,10 @@
 window.onload = function(){
 	var hash = location.hash;
+	genAuthodMes();
 	if(hash){
 		var blog = getBlog(hash);
 	}else{
-		noHashInit(1);
+		gennav(1);
 	}
 };
 window.onhashchange =function(){
@@ -13,6 +14,6 @@ window.onhashchange =function(){
 		var blog = getBlog(hash);
 	}else{
 		console.log(hash);
-		noHashInit(1);
+		gennav(1);
 	}
 };

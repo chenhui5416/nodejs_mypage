@@ -5,7 +5,9 @@ var cookieParser = require('cookie-parser');
 var session = require('express-session');
 var app = express();
 var loginCheck = require('./mymodule/login-check')
-var dataGen = require('./mymodule/data_gen')
+var dataGen = require('./mymodule/bcf_data_gen')
+
+
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 app.use(bodyParser());
@@ -24,26 +26,25 @@ app.post('/login', function(req, res){
   		}
   	});
 });
-app.get('/edit',loginCheck.restrict,function(req,res){
-	res.render('edit.ejs');
-})
+
 
 app.get('/login',function(req,res){
 	res.render('login.ejs');
 })
 app.get('/',function(req,res){
   console.log(req.ip);
-  dataGen.updateIPS(req.ip);
+  // dataGen.updateIPS(req.ip);
 	res.render('index.ejs');
 })
 
 app.get('/blog',function(req,res){
-  dataGen.getBlogs('jsons/blog.json',function(data){
+  dataGen.getFile('blog.json',function(data){
     res.send(data);
   })
 })
 app.get('/author',function(req,res){
-  dataGen.getBlogs('jsons/aboutme.json',function(data){
+  dataGen.getFile('aboutme.json',function(data){
+    authorMes = data;
     res.send(data);
   })
 });
@@ -51,15 +52,21 @@ app.get('/author',function(req,res){
 app.get('/blog/:name',function(req,res){
 	var name = req.params.name,blogUrl ='jsons/cn_hash_';
 	blogUrl=blogUrl+name+".md";
-  dataGen.getBlogFiles(blogUrl,function(data){
+  dataGen.getFile(blogUrl,function(data){
     res.send(data);
   });
-})
+});
+
 app.get('/logout', function(req, res){
   req.session.destroy(function(){
     res.redirect('/');
   });
 });
+
+app.get('/edit',loginCheck.restrict,function(req,res){
+  res.render('edit.ejs');
+})
+
 app.post('/editpost', function(req, res){
     if(req.session.user){
       var hash = (new Date())-0;
