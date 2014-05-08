@@ -9,11 +9,11 @@ var bcs = require('./bcs_data');
 var http = require('http');
 var fs=require('fs');
 var accessKey,secrectKey,host,bucket,objectPre;
-accessKey ='add you key';
-secrectKey ='add you screctKey';
-bucket ='bucket';
-host = 'bcs.duapp.com';
-objectPre = '/objectPre/'
+accessKey ='d';
+secrectKey ='d';
+bucket ='d';
+host = 'bcs.d.com';
+objectPre = '/d/'
 
 exports.getFile = function(name,fn){
   object=objectPre+name;
@@ -24,7 +24,11 @@ exports.getFile = function(name,fn){
     method:'get'
   }
   var req = http.request(opts,function(res){
-    res.on('data',function(data){
+    var data="";
+    res.on('data',function(chunk){
+      data+=chunk;
+    });
+    res.on('end',function(){
       fn(data.toString());
     });
   });
@@ -76,8 +80,9 @@ exports.updateBlogs = function(blog,hash,fn){
       method:'PUT'
     };
     var req = http.request(opts,function(res){
+      fn();
       res.on('data',function(chunk){
-        fn();
+        console.log(chunk);
       })
     });
     req.setHeader('Content-Type', 'text/plain');

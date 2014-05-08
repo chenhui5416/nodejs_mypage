@@ -21,7 +21,7 @@ function gennav(page){
   var xhr = new XMLHttpRequest();
   xhr.open('get','/blog',true);
   xhr.onreadystatechange = function(){
-    if(xhr.readyState==4&&xhr.status==200){
+    if(xhr.readyState == 4&&xhr.status == 200){
       var data = JSON.parse(xhr.responseText);
       var innerHTML='',arr = data.con,se = document.getElementById('maincon');
       var start,end;
@@ -48,9 +48,12 @@ function getBlog(hr){
   //todo  考虑怎么搞
   xhr.open('get',hr,true);
   xhr.onreadystatechange = function(){
-    if(xhr.readyState==4&&xhr.status==200){
+    if(xhr.readyState == 4&&xhr.status == 200){
       var converter = new Showdown.converter();
       html = converter.makeHtml(xhr.responseText);
+      console.log(xhr.responseText);
+      console.log(xhr.responseText.length);
+
       var innerHTML = '<article class="blogcon">'+html+'</article>';
       var se = document.getElementById('maincon');
       se.innerHTML = innerHTML;
@@ -74,7 +77,7 @@ function genPageList(count,page){
   var ulCont = document.getElementById('pagelist'),innerHTML="<li>Pre</li>";
   count = Math.ceil(count/6);
   for(var i=1;i<=count;i++){
-    innerHTML+='<li>'+i+'</li>';
+    innerHTML += '<li>'+i+'</li>';
   }
   innerHTML+='<li>Next</li>'
   ulCont.innerHTML = innerHTML;
@@ -101,11 +104,11 @@ function genBlogNav(data,hr){
   var ulCont = document.getElementById('pagelist'),innerHTML='';
   var data = data.con;
   var pre={},next={},curr={},hash;
-  for(var i=0;i<data.length;i++){
+  for(var i=0; i<data.length; i++){
     curr = data[i];
     hash='blog/'+curr.hash;
     if(hash==hr){
-      if (i<data.length-1) {
+      if (i< data.length-1) {
         next.title = data[i+1].title;
         next.hash = data[i+1].hash;
         break;

@@ -53,6 +53,10 @@ app.get('/blog/:name',function(req,res){
 	var name = req.params.name,blogUrl ='jsons/cn_hash_';
 	blogUrl=blogUrl+name+".md";
   dataGen.getFile(blogUrl,function(data){
+    console.log(data);
+    console.log(data.length);
+    res.charset = "utf8";
+    res.set('Content-Type', 'text/plain');
     res.send(data);
   });
 });

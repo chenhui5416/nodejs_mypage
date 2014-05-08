@@ -30,3 +30,17 @@ body>section>article{
 	width: 80%;
 	resize: vertical;
 }
+#prelist ul{
+	font-size: 1.6em;
+	list-style-type: none;
+	padding-left:15px; 
+	color: #00a5c5;
+}
+#prelist li{
+	margin-bottom: 10px;
+	text-decoration: underline;
+	cursor: pointer;
+}
+#prelist li:hover{
+	color: #aaa5c5;
+}
