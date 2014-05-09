@@ -9,11 +9,11 @@ var bcs = require('./bcs_data');
 var http = require('http');
 var fs=require('fs');
 var accessKey,secrectKey,host,bucket,objectPre;
-accessKey ='d';
-secrectKey ='d';
-bucket ='d';
-host = 'bcs.d.com';
-objectPre = '/d/'
+accessKey ='aa';
+secrectKey ='a';
+bucket ='a';
+host = 'bcs.duapp.com';
+objectPre = '/a/';
 
 exports.getFile = function(name,fn){
   object=objectPre+name;

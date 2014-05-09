@@ -129,3 +129,6 @@ Ajax原生实现就是使用XMLHttpRequest，不能跨域。JSONP是程序员们
 ###其他
 
 每次面试都有很大的收获，查缺补漏！
+
+
+转载注明出处：chenhui5416.duapp.com

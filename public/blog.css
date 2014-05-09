@@ -1,0 +1,38 @@
+.blogcon{
+	font-size: 1.2em;
+	font-size: 1.2rem;
+	padding: 1em;
+	padding: 1rem;
+}
+.blogcon h2{
+	color: #00a5c5;
+}
+.blogcon>pre{
+	background: #eeeeee;
+	padding: 15px 50px; 
+	border: 1px solid #bdbdbd;
+
+}
+.blogcon>blockquote>p{
+	font-size: 1.1em;
+	border-left: 10px solid #bdbdbd;
+	padding-left: 25px; 
+}
+.blogcon>p{
+	text-indent: 34px;
+}
+.blogcon p{
+	line-height:28px; 
+}
+.blogcon li{
+	line-height:28px; 
+}
+code{
+	color: blue;
+	background: #eeeeee;
+	font-size: 0.9em;
+	font-weight: bold;
+}
+.blogcon a{
+	color: rgb(83, 95, 182);
+}
