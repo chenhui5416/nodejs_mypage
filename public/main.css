@@ -1,52 +1,70 @@
 #maincon{
 	float: left;
-	width: 65%;
-	margin: 10px 0px 10px 3%;
-	background-color: white;
-	box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3)
-}
-.blognav:nth-child(2n+1){
-	background: #F7F7F7;
-}
-.blognav:nth-child(2n){
-	background: #eeeeee;
-}
-.blognav{
-	padding: 1em 1em 0em 1em;
+	width: 63%;
+	max-width: 700px;
+	margin: 40px 5% 10px 0;
 }
 
+.blognav{
+	margin-bottom: 40px;
+	background-color: white;
+	box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3);
+}
+.blognav{
+	padding: 1em;
+	color: #555555;
+}
+.blognav_bottom{
+	font-size: 14px;
+	font-size: 1.4rem;
+	color: #ffffff;
+	padding: 5px 15px;
+	margin: 0 -1.2em -1em -1.2em;
+	background: #00b4d9;
+}
+.blognav_bottom span:last-child{
+	float: right;
+}
+.blognav_bottom a{
+	display: inline;
+}
+.blognav_bottom a:hover{
+	color: #222222;
+}
 .blognav>header>a{
 	font-size: 1.8em;
 	font-size: 1.8rem;
 	font-weight: bold;
-	color: #00a5c5;
+	color: #00b4d9;
 	text-decoration: none;
 }
 .blognav>header>a:hover{
-	color: #000000;
+	color: #373b44;
 }
-.blognav>div{
+.blognav {
 	font-size: 1.2em;
 	font-size: 1.2rem;
 }
-nav{
-/*	height: 2.6em;
-	height: 2.6rem;*/
+.main>nav{
 	clear: both;
-	width: 65%;
-	margin: 10px 0px 10px 3%;
+	width: 63%;
+	height: 40px;
+	margin: 20px 5% 10px 0;
 	background-color: white;
 	box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3);
 	font-size: 2.0em;
 }
-nav ul{
-	display: inline-block;
-	padding: 0px;
-	margin:6px 10px;
+.main>nav ul{
+	/*display: inline-block;*/
+	padding: 10px;
+	margin: 6px 10px;
 	vertical-align: middle;
 }
-nav li{
+.main>nav li{
 	width: 1.6em;
+	height: 20px;
+	line-height: 20px;
+	overflow: hidden;
 	color: white;
 	text-align: center;
 	background: #00a5c5;
@@ -56,42 +74,46 @@ nav li{
 	float: left;
 	list-style-type: none;
 }
-nav li:hover{
+.main>nav li:hover{
 	background-color: #eeeeee;
 	cursor: pointer;
 	color: black;
 }
-nav li:first-child{
+.main>nav li:first-child{
 	width: 2em;
 }
-nav li:first-child.pagenav{
-	width: 320px;
+.main>nav li:first-child.pagenav{
+	width: 48%;
 }
-nav li:last-child{
+.main>nav li:last-child{
 	width: 2em;
 }
-nav li:last-child.pagenav{
-	width: 320px;
+.main>nav li:last-child.pagenav{
+	width: 48%;
 }
-body>aside{
-	width: 24%;
+.main{
+	width: 80%;
+	margin: 0 auto;
+}
+.main>aside{
+	width: 27%;
 	float: left;
 	background-color: white;
-	margin: 1em 0 1em 3%;
+	margin: 40px 0% 1em 0%;
 	padding: 1em;
 	padding: 1rem;
 	box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3);
 }
-body>aside>section{
+.main>aside>section{
 	margin-bottom: 15px;
 }
-body>aside>section>header{
+.main>aside>section>header{
 	font-size: 2.4em;
 	font-weight: bold;
-	color:#00a5c5;
+	color: #555;
 }
-body>aside>section>article{
-	color:#00a5c5;
+.main>aside>section>article{
+	color: #555;
 	font-size: 2.0em;
 	margin-top: 5px;
 	margin-left: 15px;
@@ -104,8 +126,20 @@ a{
 #author ul{
 	list-style-type: none;
 	padding: 0px;
-	color: #00a5c5;
+	color: #555;
 }
 #author a{
 	display: inline;
+}
+
+@media screen and (max-width: 900px){
+	#maincon{
+		width: 100%;
+	}
+	.main>aside{
+		width: 100%;
+	}
+	.main>nav{
+		width: 100%
+	}
 }

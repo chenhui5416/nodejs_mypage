@@ -1,5 +1,5 @@
 body>section{
-	margin:20px;
+	margin: 20px;
 }
 body>section>aside{
 	width: 20%;
@@ -33,7 +33,7 @@ body>section>article{
 #prelist ul{
 	font-size: 1.6em;
 	list-style-type: none;
-	padding-left:15px; 
+	padding-left: 15px; 
 	color: #00a5c5;
 }
 #prelist li{

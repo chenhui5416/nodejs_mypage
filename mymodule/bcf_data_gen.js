@@ -9,7 +9,7 @@ var bcs = require('./bcs_data');
 var http = require('http');
 var fs=require('fs');
 var accessKey,secrectKey,host,bucket,objectPre;
-accessKey ='aa';
+accessKey ='a';
 secrectKey ='a';
 bucket ='a';
 host = 'bcs.duapp.com';

@@ -1,18 +1,18 @@
-window.onload = function(){
+window.onload = function() {
 	var hash = location.hash;
 	genAuthodMes();
-	if(hash){
+	if(hash) {
 		var blog = getBlog(hash);
-	}else{
+	} else {
 		gennav(1);
 	}
 };
-window.onhashchange =function(){
+window.onhashchange =function() {
 	var hash = location.hash;
 	var test = hash.replace('#','');
-	if(test!=''){
+	if(test != '') {
 		var blog = getBlog(hash);
-	}else{
+	} else {
 		console.log(hash);
 		gennav(1);
 	}
