@@ -132,6 +132,44 @@ a{
 	display: inline;
 }
 
+.blog_classify_nav{
+	margin: 5px 0px 0px 15px;
+}
+.blog_classify_nav>header{
+	font-size: 2.0em;
+	cursor: pointer;
+}
+.blog_classify_nav:hover>header{
+	color: #00b4d9;
+}
+.blog_classify_nav>ul{
+	display: none;
+	list-style-type: none;
+	padding: 0px 10px;
+	font-size: 1.5em;
+}
+.blog_classify_nav:hover ul{
+	display: block;
+}
+.blog_classify_nav li{
+	margin-bottom: 10px;
+}
+.blog_classify_nav li:hover{
+	color: #00b4d9;
+	cursor: pointer;
+}
+.blog_classify_nav li:hover::after{
+	content: "GO";
+	margin-left: 10px;
+	font-weight: bold;
+	font-size: 0.8em;
+	color: red;
+
+}
+.blog_classify_nav li>a{
+	display: inline-block;
+}
+
 @media screen and (max-width: 900px){
 	#maincon{
 		width: 100%;

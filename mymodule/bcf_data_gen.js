@@ -23,12 +23,12 @@ exports.getFile = function(name, fn) {
     path:path.path,
     method:'get'
   }
-  var req = http.request(opts,function(res) {
+  var req = http.request(opts, function(res) {
     var data = "";
-    res.on('data',function(chunk) {
+    res.on('data', function(chunk) {
       data += chunk;
     });
-    res.on('end',function() {
+    res.on('end', function() {
       fn(data.toString());
     });
   });

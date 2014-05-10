@@ -21,6 +21,7 @@ function genAuthodMes() {
 function gennav(page) {
   ajax('get', '/blog', true, function(data) {
     blognavTemplate(data, page);
+    blogNavClassifyTemplate(data)
   })
 }
 
@@ -142,4 +143,39 @@ function genBlogNav(data, hr) {
     innerHTML += '<li class="pagenav"><a href="#/blog/' + curr.hash+ '">已经最后</a></li>';
   }
   ulCont.innerHTML = innerHTML;
+}
+function blogNavClassifyTemplate(data) {
+  var blogclassify = document.getElementById('blogclassify'), types = {}, listHtml;
+  var innerHTML = '<header>文章分类</header>'
+  data = JSON.parse(data);
+  data = data.con;
+  for(var i = 0; i < data.length; i++) {
+    var temp = data[i];
+    var type = temp.type;
+    if(type in types) {
+      types[type].push(temp);
+    } else {
+      types[type] = new Array();
+      types[type].push(temp);
+    }
+  }
+  console.log(types);
+  listHtml = genBlogNavClassifyTemplate(types);
+  innerHTML += listHtml;
+  blogclassify.innerHTML = innerHTML;
+}
+function genBlogNavClassifyTemplate(data) {
+  var otHtml = '', inHtml; 
+  for(var key in data) {
+    inHtml = '<nav class="blog_classify_nav"><header>' + key + 
+    '</header><ul>';
+    var listData = data[key];
+    for(var i = 0; i < listData.length; i++) {
+      inHtml += '<li><a href="#/blog/'+ listData[i].hash +'">' +
+       listData[i].title + '</a></li>';
+    }
+    inHtml += '</ul></nav>'
+    otHtml += inHtml;
+  }
+  return otHtml;
 }
