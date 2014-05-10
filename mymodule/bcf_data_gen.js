@@ -7,28 +7,28 @@
  */
 var bcs = require('./bcs_data');
 var http = require('http');
-var fs=require('fs');
-var accessKey,secrectKey,host,bucket,objectPre;
-accessKey ='a';
+var fs = require('fs');
+var accessKey, secrectKey, host, bucket, objectPre;
+accessKey = 'a';
 secrectKey ='a';
 bucket ='a';
 host = 'bcs.duapp.com';
 objectPre = '/a/';
 
-exports.getFile = function(name,fn){
-  object=objectPre+name;
-  var path = bcs.gensign(accessKey,secrectKey,'MBO','GET',bucket,object);
+exports.getFile = function(name, fn) {
+  object = objectPre + name;
+  var path = bcs.gensign(accessKey, secrectKey, 'MBO', 'GET', bucket, object);
   var opts = {
     host:host,
     path:path.path,
     method:'get'
   }
-  var req = http.request(opts,function(res){
-    var data="";
-    res.on('data',function(chunk){
-      data+=chunk;
+  var req = http.request(opts,function(res) {
+    var data = "";
+    res.on('data',function(chunk) {
+      data += chunk;
     });
-    res.on('end',function(){
+    res.on('end',function() {
       fn(data.toString());
     });
   });
@@ -36,40 +36,34 @@ exports.getFile = function(name,fn){
 };
 
 
-exports.genBlogdata = function(blog,filename){
-  object=objectPre+filename;
+exports.genBlogdata = function(blog, filename) {
+  object = objectPre + filename;
   var data = blog.textcon;
-  var path = bcs.gensign(accessKey,secrectKey,'MBO','PUT',bucket,object);
+  var path = bcs.gensign(accessKey, secrectKey, 'MBO', 'PUT', bucket, object);
   var opts = {
     host:host,
     path:path.path,
     method:'PUT'
   };
-  var req = http.request(opts,function(res){
-    res.on('data',function(chunk){})
+  var req = http.request(opts, function(res) {
+    res.on('data', function(chunk){})
   });
   req.setHeader('Content-Type', 'text/plain');
   var buf = new Buffer(data);
-  req.setHeader('Content-length',buf.length);
+  req.setHeader('Content-length', buf.length);
   req.write(data);
   req.end();
-  // fs.open(filename, 'w+',function(err,fd){
-  // 	fs.write(fd,blog.textcon,0,'utf8',function(err){
-  // 	  if(err) throw err;
-  // 	  fs.close(fd);
-  // 	});
-  // });
 };
-exports.updateBlogs = function(blog,hash,fn){
-  exports.getFile('blog.json',function(data){
-    object=objectPre+'blog.json';
+exports.updateBlogs = function(blog, hash, fn) {
+  exports.getFile('blog.json', function(data) {
+    object = objectPre + 'blog.json';
     var blogs = JSON.parse(data.toString());
     var newB = {
       "title":blog.textname,
        "hash":hash,
        "chaiyao":blog.zhaiyao,
        "type":blog.texttype
-    }
+    };
     blogs.con.unshift(newB);
     blogs = JSON.stringify(blogs);
 
@@ -79,38 +73,37 @@ exports.updateBlogs = function(blog,hash,fn){
       path:path.path,
       method:'PUT'
     };
-    var req = http.request(opts,function(res){
+    var req = http.request(opts, function(res) {
       fn();
-      res.on('data',function(chunk){
-        console.log(chunk);
-      })
+      res.on('data', function(chunk) {
+      });
     });
     req.setHeader('Content-Type', 'text/plain');
     var buf = new Buffer(blogs);
-    req.setHeader('Content-length',buf.length);
+    req.setHeader('Content-length', buf.length);
     req.write(blogs);
     req.end();
   })
 };
-exports.updateIPS = function(ip){
-  exports.getFile('ips.json',function(data){
-    object=objectPre+'ips.json';
-    var ips = data.toString()+' | '+ip;
-    var path = bcs.gensign(accessKey,secrectKey,'MBO','PUT',bucket,object);
+exports.updateIPS = function(ip) {
+  exports.getFile('ips.json', function(data) {
+    object = objectPre + 'ips.json';
+    var ips = data.toString() + ' | ' + ip;
+    var path = bcs.gensign(accessKey, secrectKey, 'MBO', 'PUT', bucket,object);
     var opts = {
       host:host,
       path:path.path,
       method:'PUT'
     };
-    var req = http.request(opts,function(res){
-      res.on('data',function(chunk){
+    var req = http.request(opts, function(res) {
+      res.on('data', function(chunk) {
         fn();
-      })
+      });
     });
     req.setHeader('Content-Type', 'text/plain');
     var buf = new Buffer(ips);
-    req.setHeader('Content-length',buf.length);
+    req.setHeader('Content-length', buf.length);
     req.write(ips);
     req.end();
-  })
+  });
 }

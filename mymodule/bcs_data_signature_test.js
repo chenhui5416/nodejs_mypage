@@ -6,15 +6,15 @@
  */
 var http = require('http');
 var bcs = require('./bcs_data');
-var mpath = bcs.gensign(accessKey,secrectKey,flag,method,bucket,object,time,ip,size);
+var mpath = bcs.gensign(accessKey, secrectKey, flag, method, bucket, object, time, ip, size);
 mpath = mpath.path;
-var opts={
+var opts = {
 	host:"bcs.duapp.com",
 	path: mpath,
 	method:'get'
 };
-var req = http.request(opts,function(res){
-	res.on('data',function(data){
+var req = http.request(opts, function(res) {
+	res.on('data', function(data) {
 		console.log(data.toString());
 	});
 });
