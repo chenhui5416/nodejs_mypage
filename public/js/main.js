@@ -9,7 +9,7 @@ window.onload = function() {
 };
 window.onhashchange =function() {
 	var hash = location.hash;
-	var test = hash.replace('#','');
+	var test = hash.replace('#!','');
 	if(test != '') {
 		var blog = getBlog(hash);
 	} else {

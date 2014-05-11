@@ -110,10 +110,10 @@
 .main>aside>section>header{
 	font-size: 2.4em;
 	font-weight: bold;
-	color: #555;
+	color: #00b4d9;
 }
 .main>aside>section>article{
-	color: #555;
+	color: #555555;
 	font-size: 2.0em;
 	margin-top: 5px;
 	margin-left: 15px;
@@ -126,7 +126,7 @@ a{
 #author ul{
 	list-style-type: none;
 	padding: 0px;
-	color: #555;
+	color: #555555;
 }
 #author a{
 	display: inline;

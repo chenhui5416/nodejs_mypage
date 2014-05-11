@@ -27,7 +27,7 @@ function gennav(page) {
 
 function getBlog(hr) {
   var html = "";
-  hr = hr.replace('#/', '');
+  hr = hr.replace('#!/', '');
   ajax('get', hr, true, function(data) {
     blogTemplate(data);
   })
@@ -67,10 +67,10 @@ function blognavTemplate(data, page) {
     time = time.toLocaleDateString();
 
     innerHTML += '<article class="blognav">' +
-    '<header><a title="' + title + '"href="#/blog/' +
+    '<header><a title="' + title + '"href="#!/blog/' +
     hash + '">' + title + '</a></header><div><p>' + zy +
     '</p></div><div class="blognav_bottom"><span>' + time + 
-    '</span> <span><a title="'+ title +'"href="#/blog/' +
+    '</span> <span><a title="'+ title +'"href="#!/blog/' +
     hash + '">阅读</a></span></div></article>'
   }
   se.innerHTML = innerHTML;
@@ -133,14 +133,14 @@ function genBlogNav(data, hr) {
     }
   }
   if(pre.title) {
-    innerHTML += '<li class="pagenav"><a href="#/blog/' + pre.hash + '">' + pre.title + ' </a></li>';
+    innerHTML += '<li class="pagenav"><a href="#!/blog/' + pre.hash + '">' + pre.title + ' </a></li>';
   } else {
-    innerHTML += '<li class="pagenav"><a href="#/blog/' + curr.hash + '">已经最前</a></li>';
+    innerHTML += '<li class="pagenav"><a href="#!/blog/' + curr.hash + '">已经最前</a></li>';
   }
   if(next.title) {
-    innerHTML += '<li class="pagenav"><a href="#/blog/' + next.hash + '">' + next.title+ ' </a></li>';
+    innerHTML += '<li class="pagenav"><a href="#!/blog/' + next.hash + '">' + next.title+ ' </a></li>';
   } else {
-    innerHTML += '<li class="pagenav"><a href="#/blog/' + curr.hash+ '">已经最后</a></li>';
+    innerHTML += '<li class="pagenav"><a href="#!/blog/' + curr.hash+ '">已经最后</a></li>';
   }
   ulCont.innerHTML = innerHTML;
 }
@@ -171,7 +171,7 @@ function genBlogNavClassifyTemplate(data) {
     '</header><ul>';
     var listData = data[key];
     for(var i = 0; i < listData.length; i++) {
-      inHtml += '<li><a href="#/blog/'+ listData[i].hash +'">' +
+      inHtml += '<li><a href="#!/blog/'+ listData[i].hash +'">' +
        listData[i].title + '</a></li>';
     }
     inHtml += '</ul></nav>'
