@@ -49,9 +49,19 @@ app.get('/author', function(req,res) {
 });
 
 app.get('/blog/:name', function(req, res) {
-	var name = req.params.name,blogUrl = 'jsons/cn_hash_';
+	var name = req.params.name, blogUrl = 'jsons/cn_hash_';
 	blogUrl = blogUrl + name + ".md";
   dataGen.getFile(blogUrl, function(data) {
+    res.charset = "utf8";
+    res.set('Content-Type', 'text/plain');
+    res.send(data);
+  });
+});
+
+app.get('/comments/:comments', function(req, res) {
+  var comments = req.params.comments, commentUrl = 'comments/';
+  commentUrl = commentUrl + comments + '_comment.json';
+  dataGen.getFile(commentUrl, function(data) {
     res.charset = "utf8";
     res.set('Content-Type', 'text/plain');
     res.send(data);

@@ -1,0 +1,26 @@
+{
+	"id":12348392,
+	"con":[
+		{
+			"user":"评论测试员1",
+			"comment":"评论测试内容1",
+			"time":"2011-11-12",
+			"email":"chenhui5416@126.com",
+			"weibo":"weibo.com"
+		},
+		{
+			"user":"评论测试员2",
+			"comment":"评论测试内容2",
+			"time":"2011-11-31",
+			"email":"chenhu2i5416@11.com",
+			"weibo":"te2st.com"
+		},
+		{
+			"user":"评论测试员3",
+			"comment":"评论测试内容3",
+			"time":"2011-11-121",
+			"email":"chenhui52416@nn.com",
+			"weibo":"tes2t.com"
+		}
+	]
+}

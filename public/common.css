@@ -60,5 +60,18 @@ body>header>a:hover{
     background-color: #05D6FF;
 }
 footer{
-	margin-bottom: 20px;
+	margin-top: 10px;
+	height: 30px;
+	background-color: #373b44;
+	font-size: 2em;
+	text-align: center;
+	vertical-align: middle;
+	padding: 2px;
+	color: #ffffff;
 }
+footer>a{
+	display: inline;
+	margin-left: 10px;
+}
+footer>a:hover{
+	color: #05D6FF;

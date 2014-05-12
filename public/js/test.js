@@ -15,26 +15,30 @@ function ajax(method, url, async, callback) {
 function genAuthodMes() {
   ajax('get', '/author', true, function(data) {
     authorTemplate(data);
-  })
+  });
 }
 
 function gennav(page) {
   ajax('get', '/blog', true, function(data) {
     blognavTemplate(data, page);
     blogNavClassifyTemplate(data)
-  })
+  });
 }
 
 function getBlog(hr) {
   var html = "";
-  hr = hr.replace('#!/', '');
-  ajax('get', hr, true, function(data) {
+  var neg = /blog\/([0-9]*)(\/s|\/|$)/;
+  var res = neg.exec(hr);
+  ajax('get', res[0], true, function(data) {
     blogTemplate(data);
-  })
+  });
   ajax('get', '/blog', true, function(data) {
       data = JSON.parse(data);
-      genBlogNav(data,hr);
-  })
+      genBlogNav(data,res[0]);
+  });
+  ajax('get', '/comments/'+res[1],true , function(data) {
+    genBlogCommentTemplate(data);
+  });
   return html;
 }
 /**
@@ -178,4 +182,33 @@ function genBlogNavClassifyTemplate(data) {
     otHtml += inHtml;
   }
   return otHtml;
+}
+function genBlogCommentTemplate(data) {
+  data = JSON.parse(data);
+  console.log(data);
+  var blogId, blogCon, formHtml, ulHtml, innerHTML, se;
+  se = document.getElementById('comments');
+  blogId = data.id;
+  blogCon = data.con;
+  ulHtml = '<ul>'
+  for(var i = 0; i < blogCon.length; i++) {
+    ulHtml += '<li><div class="comment_user">' + blogCon[i].user + '</div>' +
+              '<div class="comment_con">' + blogCon[i].comment + '</div>' +
+              ' <div class="comment_footer">' + blogCon[i].time + '回复</div>'
+  }
+  ulHtml += '</ul>';
+
+  formHtml = '<form class="comments_form" method="post" action="">' +
+             '<textarea></textarea>' +
+             '<input placeholder="昵称(必填)" type="text" name="comment_user" required>' +
+             '<input placeholder="邮箱(必填)" type="email" name="comment_email" required>' +
+             '<input placeholder="微博(互粉啊！)" type="url" name="comment_weibo" required>' +
+             '<input class="btn comments_form_btn" type="submit">' +
+             '</form>'
+  innerHTML = ulHtml + formHtml+'<div style="padding-bottom:20px"></div>';//FIXED
+  se.innerHTML = innerHTML;
+}
+function clearBlogCommentTemplate() {
+  var se = document.getElementById('comments');
+  se.innerHTML = "";
 }
