@@ -66,7 +66,6 @@ exports.updateBlogs = function(blog, hash, fn) {
     };
     blogs.con.unshift(newB);
     blogs = JSON.stringify(blogs);
-
     var path = bcs.gensign(accessKey,secrectKey,'MBO','PUT',bucket,object);
     var opts = {
       host:host,
@@ -83,8 +82,38 @@ exports.updateBlogs = function(blog, hash, fn) {
     req.setHeader('Content-length', buf.length);
     req.write(blogs);
     req.end();
-  })
+  });
 };
+exports.updateComment = function(comment, hash, fn) {
+  var filename = 'comments/' + hash + '_comment.json';
+  var date = new Date();
+  exports.getFile(filename, function(data) {
+    data = JSON.parse(data);
+    var newC = {
+      "user":comment.comment_user,
+      "comment":comment.comment_con,
+      "email":comment.comment_email,
+      "weibo":comment.comment_weibo,
+      "time":date.toString()
+    }
+    data.con.unshift(newC);
+    data = JSON.stringify(data);
+    var path = bcs.gensign(accessKey, secrectKey, 'MBO', 'PUT', bucket, object);
+    var opts = {
+      host:host,
+      path:path.path,
+      method:'PUT'
+    };
+    var req = http.request(opts, function(res) {
+      fn();
+    });
+    req.setHeader('Content-Type', 'text/plain');
+    var buf = new Buffer(data);
+    req.setHeader('Content-length', buf.length);
+    req.write(data);
+    req.end();
+  });
+}
 exports.updateIPS = function(ip) {
   exports.getFile('ips.json', function(data) {
     object = objectPre + 'ips.json';

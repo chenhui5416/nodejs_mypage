@@ -68,6 +68,13 @@ app.get('/comments/:comments', function(req, res) {
   });
 });
 
+app.post('/comments/:comments', function(req, res) {
+  var comments = req.params.comments;
+  dataGen.updateComment(req.body, comments, function() {
+    res.send('ok');  //FIXED
+  });
+});
+
 app.get('/logout', function(req, res) {
   req.session.destroy(function() {
     res.redirect('/');

@@ -1,7 +1,7 @@
 /**
  * ajax get data
  */
-function ajax(method, url, async, callback) {
+function ajax(method, url, async, callback, str, form) {
   var xhr = new XMLHttpRequest();
   xhr.open(method,url,async);
   xhr.onreadystatechange = function() {
@@ -9,7 +9,11 @@ function ajax(method, url, async, callback) {
       callback(xhr.responseText);
     }
   };
-  xhr.send();
+  if (form) {
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+  };
+  xhr.send(str);
 }
 
 function genAuthodMes() {
@@ -192,17 +196,18 @@ function genBlogCommentTemplate(data) {
   blogCon = data.con;
   ulHtml = '<ul>'
   for(var i = 0; i < blogCon.length; i++) {
+    var time = new Date(blogCon[i].time);
     ulHtml += '<li><div class="comment_user">' + blogCon[i].user + '</div>' +
               '<div class="comment_con">' + blogCon[i].comment + '</div>' +
-              ' <div class="comment_footer">' + blogCon[i].time + '回复</div>'
+              ' <div class="comment_footer">' + time.toLocaleDateString() + '回复</div>'
   }
   ulHtml += '</ul>';
 
-  formHtml = '<form class="comments_form" method="post" action="">' +
-             '<textarea></textarea>' +
+  formHtml = '<form class="comments_form" method="post" action="/comments/'+ blogId +'" onsubmit="commentHandler(event)">' +
+             '<textarea name="comment_con"></textarea>' +
              '<input placeholder="昵称(必填)" type="text" name="comment_user" required>' +
              '<input placeholder="邮箱(必填)" type="email" name="comment_email" required>' +
-             '<input placeholder="微博(互粉啊！)" type="url" name="comment_weibo" required>' +
+             '<input placeholder="微博(互粉啊！)" type="text" name="comment_weibo" >' +
              '<input class="btn comments_form_btn" type="submit">' +
              '</form>'
   innerHTML = ulHtml + formHtml+'<div style="padding-bottom:20px"></div>';//FIXED
@@ -211,4 +216,25 @@ function genBlogCommentTemplate(data) {
 function clearBlogCommentTemplate() {
   var se = document.getElementById('comments');
   se.innerHTML = "";
+}
+function commentHandler(event) {
+  event.preventDefault();
+  var target = event.target;
+  var url = target.action;
+  var reg = /\/([0-9]*)(\/s|\\|$)/;
+  var res = reg.exec(url);
+  console.log(res);
+  var postStr = 'comment_user=' + target.comment_user.value + 
+                '&comment_email=' + target.comment_email.value + 
+                '&comment_weibo=' + target.comment_weibo.value +
+                '&comment_con=' + target.comment_con.value;
+  console.log(url);
+  ajax('post', url, true, function(data){
+    if(data == "ok") {
+      ajax('get', '/comments/'+res[1],true , function(data) {
+        genBlogCommentTemplate(data);
+      });
+    }
+  }, postStr, true);
+
 }
