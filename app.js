@@ -90,6 +90,7 @@ app.post('/editpost', function(req, res) {
       var hash = (new Date())-0;
       var filename = 'jsons/cn_hash_'+hash+'.md';
       dataGen.genBlogdata(req.body, filename);
+      dataGen.genCommentdata(hash);
       dataGen.updateBlogs(req.body, hash, function() {
         res.redirect('/');
       });

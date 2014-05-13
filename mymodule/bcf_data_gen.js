@@ -54,6 +54,28 @@ exports.genBlogdata = function(blog, filename) {
   req.write(data);
   req.end();
 };
+exports.genCommentdata = function(hash) {
+  object = objectPre + 'comments/' + hash + '_comment.json';
+  var data = {
+    "id": hash,
+    "con":[]
+  };
+  data = JSON.stringify(data);
+  var path = bcs.gensign(accessKey, secrectKey, 'MBO', 'PUT', bucket, object);
+  var opts = {
+    host:host,
+    path:path.path,
+    method:'PUT'
+  };
+  var req = http.request(opts, function(res) {
+    res.on('data', function(chunk){})
+  });
+  req.setHeader('Content-Type', 'text/plain');
+  var buf = new Buffer(data);
+  req.setHeader('Content-length', buf.length);
+  req.write(data);
+  req.end();
+}
 exports.updateBlogs = function(blog, hash, fn) {
   exports.getFile('blog.json', function(data) {
     object = objectPre + 'blog.json';

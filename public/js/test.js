@@ -108,16 +108,20 @@ function genPageList(count, page) {
   for(var i=liList.length-2; i>0; i--) {
     liList[i].onclick = function(event) {
       var p = event.target.innerHTML;
-      noHashInit(p);
+      // noHashInit(p);
+      gennav(p);
+
     }
   }
   liList[0].onclick = function(event) {
     var p = page > 1 ? page - 1 : 1;
-    noHashInit(p);
+      // noHashInit(p);
+      gennav(p);
   }
   liList[liList.length - 1].onclick = function(event) {
     var p = page >= liList.length-2 ? page : page + 1;
-    noHashInit(p);
+      // noHashInit(p);
+      gennav(p);
   }
 }
 function genBlogNav(data, hr) {
