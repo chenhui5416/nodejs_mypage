@@ -201,17 +201,21 @@ function genBlogCommentTemplate(data) {
   ulHtml = '<ul>'
   for(var i = 0; i < blogCon.length; i++) {
     var time = new Date(blogCon[i].time);
-    ulHtml += '<li><div class="comment_user">' + blogCon[i].user + '</div>' +
+    ulHtml += '<li><div class="comment_user">' + blogCon[i].user + 
+              '<a target="_blank" title="查看评论者微博" href="' + blogCon[i].weibo + '">'+
+              '<img src="./img/weibo_logo.png">'+
+              '</a></div>' +
               '<div class="comment_con">' + blogCon[i].comment + '</div>' +
-              ' <div class="comment_footer">' + time.toLocaleDateString() + '回复</div>'
+              ' <div class="comment_footer">' + time.toLocaleDateString() + 
+              '<a onclick="refCommentHandler(\''+blogCon[i].user+'\')">回复</a></div>'
   }
   ulHtml += '</ul>';
 
   formHtml = '<form class="comments_form" method="post" action="/comments/'+ blogId +'" onsubmit="commentHandler(event)">' +
-             '<textarea name="comment_con"></textarea>' +
+             '<textarea id="comment_con" name="comment_con"></textarea>' +
              '<input placeholder="昵称(必填)" type="text" name="comment_user" required>' +
              '<input placeholder="邮箱(必填)" type="email" name="comment_email" required>' +
-             '<input placeholder="微博(互粉啊！)" type="text" name="comment_weibo" >' +
+             '<input placeholder="微博(互粉呀！)" type="text" name="comment_weibo" value="http://">' +
              '<input class="btn comments_form_btn" type="submit">' +
              '</form>'
   innerHTML = ulHtml + formHtml+'<div style="padding-bottom:20px"></div>';//FIXED
@@ -241,4 +245,11 @@ function commentHandler(event) {
     }
   }, postStr, true);
 
+}
+
+function refCommentHandler(ref) {
+  var comment_con = document.getElementById('comment_con');
+  comment_con.value = "@ " + ref + " :"; 
+  comment_con.focus();
+  comment_con.select();
 }

@@ -60,7 +60,8 @@ body>header>a:hover{
     background-color: #05D6FF;
 }
 footer{
-	margin-top: 10px;
+	/*注意有个地方需要处理，不然某页内blog数比较少时就会不美观的问题*/
+	margin-top: 30px;
 	height: 30px;
 	background-color: #373b44;
 	font-size: 2em;

@@ -183,6 +183,10 @@ a{
 	margin: 15px;
 	padding: 0px;
 }
+#comments a{
+	display: inline;
+	margin-left: 10px;
+}
 #comments li{
 	margin-top: 30px;
 	padding: 10px;
@@ -194,6 +198,11 @@ a{
 .comment_footer{
 	text-align: right;
 	color: #777777;
+}
+.comment_footer a:hover{
+	color: #00a5c5;;
+	cursor: pointer;
+	border-bottom: 1px solid #00a5c5;
 }
 .comments_form{
     margin: 15px;
@@ -219,6 +228,7 @@ a{
 	margin-top: 20px;
 	width: 100%;
 }
+
 @media screen and (max-width: 900px){
 	#maincon{
 		width: 100%;
