@@ -1,7 +1,7 @@
-body>section{
+body>section {
 	margin: 20px;
 }
-body>section>aside{
+body>section>aside {
 	width: 20%;
 	float: left;
 	margin-left: 3%; 
@@ -9,7 +9,7 @@ body>section>aside{
 	box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3);
 	padding: 5px
 }
-body>section>article{
+body>section>article {
 	width: 65%;
 	float: left;
 	margin-left: 3%; 
@@ -17,30 +17,30 @@ body>section>article{
 	background-color: white;
 	box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3);
 }
-#editform{
+#editform {
 	padding: 10px;
 	line-height: 16px;
 	font-size: 14px;
 }
-#editform label{
+#editform label {
 	font-weight: bold;
 	font-size: 16px;
 }
-#editform textarea{
+#editform textarea {
 	width: 80%;
 	resize: vertical;
 }
-#prelist ul{
+#prelist ul {
 	font-size: 1.6em;
 	list-style-type: none;
 	padding-left: 15px; 
 	color: #00a5c5;
 }
-#prelist li{
+#prelist li {
 	margin-bottom: 10px;
 	text-decoration: underline;
 	cursor: pointer;
 }
-#prelist li:hover{
+#prelist li:hover {
 	color: #aaa5c5;
 }

@@ -1,4 +1,4 @@
-body{
+body {
 	margin: 0;
 	padding: 0;
 	font-size: 10px;
@@ -6,7 +6,7 @@ body{
     font-family: Georgia, 'Nimbus Roman No9 L', 'Liberation Serif', serif;
     word-break: break-all;
 }
-body>header{
+body>header {
 	background-color: #373b44;
 	height: 50px;
 	padding: 10px 20px;	
@@ -15,15 +15,15 @@ body>header{
 	font-size: 2rem;
 	font-weight: bold;
 }
-body>header>a{
+body>header>a {
 	color: inherit;
 	text-decoration: none;
 	display: inline;
 }
-body>header>a:hover{
+body>header>a:hover {
 	color: #00b4d9;
 }
-#search{
+#search {
 	display: inline-block;
 	float: right;
 	margin-top: 0.5em;
@@ -42,11 +42,11 @@ body>header>a:hover{
 	-moz-transition: width 1s;
 	transition: width 1s;
 }
-#search:focus{
+#search:focus {
 	width: 12em;
 	width: 12rem;
 }
-.btn{
+.btn {
     background-color: #00a5c5;
     color: white;
     height: 30px;
@@ -56,10 +56,10 @@ body>header>a:hover{
     box-shadow: 1px 2px 3px #000000;
     font-weight: bold;
 }
-.btn:hover{
+.btn:hover {
     background-color: #05D6FF;
 }
-footer{
+footer {
 	/*注意有个地方需要处理，不然某页内blog数比较少时就会不美观的问题*/
 	margin-top: 30px;
 	height: 30px;
@@ -70,9 +70,9 @@ footer{
 	padding: 2px;
 	color: #ffffff;
 }
-footer>a{
+footer>a {
 	display: inline;
 	margin-left: 10px;
 }
-footer>a:hover{
+footer>a:hover {
 	color: #05D6FF;

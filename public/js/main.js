@@ -13,7 +13,6 @@ window.onhashchange =function() {
 	if(test != '') {
 		var blog = getBlog(hash);
 	} else {
-		console.log(hash);
 		gennav(1);
 		clearBlogCommentTemplate();
 	}

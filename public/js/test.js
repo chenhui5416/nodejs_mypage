@@ -33,8 +33,10 @@ function getBlog(hr) {
   var html = "";
   var neg = /blog\/([0-9]*)(\/s|\/|$)/;
   var res = neg.exec(hr);
+  transAnimate();//加载提示
   ajax('get', res[0], true, function(data) {
     blogTemplate(data);
+    clearTranAnimate();//清楚加载提示
   });
   ajax('get', '/blog', true, function(data) {
       data = JSON.parse(data);
@@ -252,4 +254,14 @@ function refCommentHandler(ref) {
   comment_con.value = "@ " + ref + " :"; 
   comment_con.focus();
   comment_con.select();
+}
+
+function transAnimate(){
+  var animate = document.getElementById('animate');
+  animate.style.display = 'block';
+  animate.innerHTML = '<div class="tran_animate_con"><div class="tran_ball_inner"></div><div class="tran_ball_outer"></div></div>';
+}
+function clearTranAnimate(){
+  var animate = document.getElementById('animate');
+  animate.style.display = 'none';
 }

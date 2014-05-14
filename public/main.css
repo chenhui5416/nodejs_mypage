@@ -1,20 +1,20 @@
-#maincon{
+#maincon {
 	float: left;
 	width: 63%;
 	max-width: 700px;
 	margin: 40px 5% 10px 0;
 }
 
-.blognav{
+.blognav {
 	margin-bottom: 40px;
 	background-color: white;
 	box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3);
 }
-.blognav{
+.blognav {
 	padding: 1em;
 	color: #555555;
 }
-.blognav_bottom{
+.blognav_bottom {
 	font-size: 14px;
 	font-size: 1.4rem;
 	color: #ffffff;
@@ -22,30 +22,30 @@
 	margin: 0 -1.2em -1em -1.2em;
 	background: #00b4d9;
 }
-.blognav_bottom span:last-child{
+.blognav_bottom span:last-child {
 	float: right;
 }
-.blognav_bottom a{
+.blognav_bottom a {
 	display: inline;
 }
-.blognav_bottom a:hover{
+.blognav_bottom a:hover { 
 	color: #222222;
 }
-.blognav>header>a{
+.blognav>header>a {
 	font-size: 1.8em;
 	font-size: 1.8rem;
 	font-weight: bold;
 	color: #00b4d9;
 	text-decoration: none;
 }
-.blognav>header>a:hover{
+.blognav>header>a:hover {
 	color: #373b44;
 }
 .blognav {
 	font-size: 1.2em;
 	font-size: 1.2rem;
 }
-.main>nav{
+.main>nav {
 	clear: both;
 	width: 63%;
 	height: 40px;
@@ -54,13 +54,13 @@
 	box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3);
 	font-size: 2.0em;
 }
-.main>nav ul{
+.main>nav ul {
 	/*display: inline-block;*/
 	padding: 10px;
 	margin: 6px 10px;
 	vertical-align: middle;
 }
-.main>nav li{
+.main>nav li {
 	width: 1.6em;
 	height: 20px;
 	line-height: 20px;
@@ -74,28 +74,28 @@
 	float: left;
 	list-style-type: none;
 }
-.main>nav li:hover{
+.main>nav li:hover {
 	background-color: #eeeeee;
 	cursor: pointer;
 	color: black;
 }
-.main>nav li:first-child{
+.main>nav li:first-child { 
 	width: 2em;
 }
-.main>nav li:first-child.pagenav{
+.main>nav li:first-child.pagenav {
 	width: 48%;
 }
-.main>nav li:last-child{
+.main>nav li:last-child {
 	width: 2em;
 }
-.main>nav li:last-child.pagenav{
+.main>nav li:last-child.pagenav {
 	width: 48%;
 }
-.main{
+.main {
 	width: 80%;
 	margin: 0 auto;
 }
-.main>aside{
+.main>aside {
 	width: 27%;
 	float: left;
 	background-color: white;
@@ -104,61 +104,61 @@
 	padding: 1rem;
 	box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3);
 }
-.main>aside>section{
+.main>aside>section {
 	margin-bottom: 15px;
 }
-.main>aside>section>header{
+.main>aside>section>header {
 	font-size: 2.4em;
 	font-weight: bold;
 	color: #00b4d9;
 }
-.main>aside>section>article{
+.main>aside>section>article {
 	color: #555555;
 	font-size: 2.0em;
 	margin-top: 5px;
 	margin-left: 15px;
 }
-a{
+a {
 	color: inherit;
 	text-decoration: none;
 	display: block;
 }
-#author ul{
+#author ul {
 	list-style-type: none;
 	padding: 0px;
 	color: #555555;
 }
-#author a{
+#author a {
 	display: inline;
 }
 
-.blog_classify_nav{
+.blog_classify_nav {
 	margin: 5px 0px 0px 15px;
 }
-.blog_classify_nav>header{
+.blog_classify_nav>header {
 	font-size: 2.0em;
 	cursor: pointer;
 }
-.blog_classify_nav:hover>header{
+.blog_classify_nav:hover>header {
 	color: #00b4d9;
 }
-.blog_classify_nav>ul{
+.blog_classify_nav>ul {
 	display: none;
 	list-style-type: none;
 	padding: 0px 10px;
 	font-size: 1.5em;
 }
-.blog_classify_nav:hover ul{
+.blog_classify_nav:hover ul {
 	display: block;
 }
-.blog_classify_nav li{
+.blog_classify_nav li {
 	margin-bottom: 10px;
 }
-.blog_classify_nav li:hover{
+.blog_classify_nav li:hover {
 	color: #00b4d9;
 	cursor: pointer;
 }
-.blog_classify_nav li:hover::after{
+.blog_classify_nav li:hover::after {
 	content: "GO";
 	margin-left: 10px;
 	font-weight: bold;
@@ -166,10 +166,10 @@ a{
 	color: red;
 
 }
-.blog_classify_nav li>a{
+.blog_classify_nav li>a {
 	display: inline-block;
 }
-#comments{
+#comments {
 	width: 63%;
 	margin: 20px 5% 10px 0;
 	background-color: white;
@@ -178,33 +178,33 @@ a{
 	line-height: 2.0em;
 	/*padding-bottom: 20px;*/
 }
-#comments ul{
+#comments ul {
 	list-style-type: none;
 	margin: 15px;
 	padding: 0px;
 }
-#comments a{
+#comments a {
 	display: inline;
 	margin-left: 10px;
 }
-#comments li{
+#comments li {
 	margin-top: 30px;
 	padding: 10px;
 	border-bottom: 1px solid #bebebe;
 }
-.comment_user{
+.comment_user {
 	color: #777777;
 }
-.comment_footer{
+.comment_footer {
 	text-align: right;
 	color: #777777;
 }
-.comment_footer a:hover{
+.comment_footer a:hover {
 	color: #00a5c5;;
 	cursor: pointer;
 	border-bottom: 1px solid #00a5c5;
 }
-.comments_form{
+.comments_form {
     margin: 15px;
     padding: 20px;
     background-color: #F7F7F7;
@@ -212,34 +212,80 @@ a{
     border: 1px solid #bebebe;
     border-radius: 10px;
 }
-.comments_form input{
+.comments_form input {
 	width: 28%;
 	margin-right: 4%;
 	border-radius: 5px;
 }
-.comments_form textarea{
+.comments_form textarea {
 	width: 100%;
 	height: 100px;
 	resize: vertical;
 	border-radius: 10px;
 }
-.comments_form .btn{
+.comments_form .btn {
 	display: block;
 	margin-top: 20px;
 	width: 100%;
 }
-
-@media screen and (max-width: 900px){
-	#maincon{
+.tran_animate_con {
+	position: fixed;
+	top: 35%;
+	background-color: rgba(155, 155, 155, 0.5);
+	width: 100%;
+	height: 100px;
+	font-size: 3em;
+	text-align: center;
+}
+@-webkit-keyframes spinsinner {
+	0% { -webkit-transform:rotate(0deg); }
+	100% { -webkit-transform:rotate(-360deg); }
+}
+@-webkit-keyframes spinsoutter {
+	0% { -webkit-transform:rotate(0deg); }
+	100% { -webkit-transform:rotate(360deg); }
+}
+.tran_ball_inner {
+	position: relative;
+	top: 25px;
+	height: 40px;
+	width: 40px;
+	margin: 0px auto;
+	background-color: rgba(0, 212, 255, 0.8);
+	opacity: 0.8;
+	border-top: 5px solid rgba(0, 0, 0, 0);
+	border-left: 5px solid rgba(0, 0, 0, 0);
+	border-radius: 0 70%;
+	box-shadow: 0px 0px 35px 1px rgba(11, 213, 255, 0.7);
+	-webkit-animation: spinsinner 0.5s infinite linear;
+}
+.tran_ball_outer {
+	position: relative;
+	top: -40px;
+	height: 80px;
+	width: 80px;
+	margin: 0px auto;
+	background-color: rgba(0, 0, 0, 0);
+	border: 5px solid rgba(0, 180, 217, 0.70);
+	border-top: 5px solid rgba(0, 0, 0, 0);
+	border-bottom: 5px solid rgba(0, 0, 0, 0);
+	opacity: 0.8;
+	border-radius: 50%;
+	box-shadow: 0px 0px 30px rgba(0, 180, 217, 0.70);
+	-webkit-animation: spinsoutter 1s infinite linear;
+}
+@media screen and (max-width: 900px) {
+	#maincon {
 		width: 100%;
 	}
-	.main>aside{
+	.main>aside {
 		width: 100%;
 	}
-	.main>nav{
+	.main>nav {
 		width: 100%;
 	}
-	#comments{
+	#comments {
 		width: 100%;
 	}
 }
+
