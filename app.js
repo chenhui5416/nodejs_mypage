@@ -6,7 +6,7 @@ var session = require('express-session');
 var app = express();
 var loginCheck = require('./mymodule/login-check')
 var dataGen = require('./mymodule/bcf_data_gen')
-
+var fs = require('fs');
 
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
@@ -27,11 +27,17 @@ app.post('/login', function(req, res) {
   	});
 });
 
+app.get('/img/:path', function(req, res) {
+  var path = 'blogimg/' + req.params.path;
+  dataGen.getImg(path, function(data) {
+    res.send(data);
+  });
+})
 
-app.get('/login',function(req, res) {
+app.get('/login', function(req, res) {
 	res.render('login.ejs');
 })
-app.get('/',function(req, res) {
+app.get('/', function(req, res) {
   console.log(req.ip);
 	res.render('index.ejs');
 })
@@ -99,5 +105,5 @@ app.post('/editpost', function(req, res) {
     }
 });
 
-app.listen(9001);
+app.listen(9002);
 

@@ -34,7 +34,34 @@ exports.getFile = function(name, fn) {
   });
   req.end();
 };
-
+/**
+ * 二进制处理，默认是字符串形式，转码会导致出错
+ */
+exports.getImg = function(name, fn) {
+  object = objectPre + name;
+  var path = bcs.gensign(accessKey, secrectKey, 'MBO', 'GET', bucket, object);
+  var opts = {
+    host:host,
+    path:path.path,
+    method:'get',
+  }
+  var req = http.request(opts, function(res) {
+    var data = [], size = 0;
+    res.on('data', function(chunk) {
+      data.push(chunk);
+      size += chunk.length;
+    });
+    res.on('end', function() {
+      var buffer = new Buffer(size), pos = 0;
+      for(var i = 0, l = data.length; i < l; i++) {
+        data[i].copy(buffer, pos);
+        pos += data[i].length;
+      }
+      fn(buffer);
+    });
+  });
+  req.end();
+};
 
 exports.genBlogdata = function(blog, filename) {
   object = objectPre + filename;
