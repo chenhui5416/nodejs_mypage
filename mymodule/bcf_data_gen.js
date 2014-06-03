@@ -63,6 +63,10 @@ exports.getImg = function(name, fn) {
   req.end();
 };
 
+exports.genImgData = function(img, filename) {
+
+}
+
 exports.genBlogdata = function(blog, filename) {
   object = objectPre + filename;
   var data = blog.textcon;
@@ -81,6 +85,7 @@ exports.genBlogdata = function(blog, filename) {
   req.write(data);
   req.end();
 };
+
 exports.genCommentdata = function(hash) {
   object = objectPre + 'comments/' + hash + '_comment.json';
   var data = {
@@ -103,6 +108,7 @@ exports.genCommentdata = function(hash) {
   req.write(data);
   req.end();
 }
+
 exports.updateBlogs = function(blog, hash, fn) {
   exports.getFile('blog.json', function(data) {
     object = objectPre + 'blog.json';
@@ -133,6 +139,7 @@ exports.updateBlogs = function(blog, hash, fn) {
     req.end();
   });
 };
+
 exports.updateComment = function(comment, hash, fn) {
   var filename = 'comments/' + hash + '_comment.json';
   var date = new Date();
@@ -163,6 +170,7 @@ exports.updateComment = function(comment, hash, fn) {
     req.end();
   });
 }
+
 exports.updateIPS = function(ip) {
   exports.getFile('ips.json', function(data) {
     object = objectPre + 'ips.json';
