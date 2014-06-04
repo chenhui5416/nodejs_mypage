@@ -1,21 +1,23 @@
 var express = require('express');
 var path = require('path');
 var bodyParser = require('body-parser');
+var multipart = require('connect-multiparty');
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
 var app = express();
 var loginCheck = require('./mymodule/login-check')
 var dataGen = require('./mymodule/bcf_data_gen')
 var fs = require('fs');
-
+var multipartMiddleware = multipart();
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
-app.use(bodyParser());
+app.use(bodyParser({uploadDir: './uploads'}));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.cookieParser('chenhui5416'));
 app.use(session());
 
 app.post('/login', function(req, res) {
+  console.log(req.body, req.files);
   	loginCheck.authenticate(req.body.username, req.body.password, function(data) {
   		if(data) {
 	  		req.session.user = "admin";
@@ -91,10 +93,11 @@ app.get('/edit', loginCheck.restrict, function(req, res) {
   res.render('edit.ejs');
 })
 
-app.post('/editpost', function(req, res) {
+app.post('/editpost', multipartMiddleware, function(req, res) {
     if(req.session.user) {
       var hash = (new Date())-0;
       var filename = 'jsons/cn_hash_'+hash+'.md';
+      // dataGen.genImageData(req.files);
       dataGen.genBlogdata(req.body, filename);
       dataGen.genCommentdata(hash);
       dataGen.updateBlogs(req.body, hash, function() {

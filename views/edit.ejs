@@ -21,7 +21,7 @@
         </div>
       </aside>
       <article>
-        <form method="POST" action="/editpost" id="editform">
+        <form method="POST" action="/editpost" id="editform" enctype="multipart/form-data" >
           <p>
             <label for="texttype">归类:</label>
             <input type="text" name="texttype">
@@ -39,6 +39,9 @@
           </p>
           <p>
             <textarea name="textcon" rows="35"></textarea>
+          </p>
+          <p>
+            <input type="file" name="image1" value="图片">
           </p>
           <input class="btn" type="submit" value="发布">
         </form>

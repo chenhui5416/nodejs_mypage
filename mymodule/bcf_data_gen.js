@@ -62,11 +62,22 @@ exports.getImg = function(name, fn) {
   });
   req.end();
 };
-
-exports.genImgData = function(img, filename) {
-
+var putImage = function(data, filename) {
+  object = objectPre + filename;
+  var path = bcs.gensign(accessKey, secrectKey, 'MBO', 'PUT', bucket, object);
+  var opts = {
+    host:host,
+    path:path.path,
+    method:'PUT'
+  };
+  var req = http.request(opts, function(res) {
+    res.on('data', function(chunk){console.log(chunk)})
+  });
+  req.setHeader('Content-Type', 'multipart/form-data');
+  req.setHeader('Content-length', data.length);
+  req.write(data);
+  req.end();
 }
-
 exports.genBlogdata = function(blog, filename) {
   object = objectPre + filename;
   var data = blog.textcon;
@@ -175,7 +186,7 @@ exports.updateIPS = function(ip) {
   exports.getFile('ips.json', function(data) {
     object = objectPre + 'ips.json';
     var ips = data.toString() + ' | ' + ip;
-    var path = bcs.gensign(accessKey, secrectKey, 'MBO', 'PUT', bucket,object);
+    var path = bcs.gensign(accessKey, secrectKey, 'MBO', 'PUT', bucket, object);
     var opts = {
       host:host,
       path:path.path,
@@ -192,4 +203,17 @@ exports.updateIPS = function(ip) {
     req.write(ips);
     req.end();
   });
+}
+
+exports.genImageData = function(files) {
+  for (var key in files) {
+    var imageData = files[key];
+    var path = imageData.path;
+    console.log(path);
+    fs.readFile(path, function(err, data) {
+      if(err) throw err;
+      putImage(data, 'mytest.jpg');
+      fs.unlink(path);
+    });
+  }
 }

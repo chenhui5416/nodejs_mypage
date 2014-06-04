@@ -173,7 +173,6 @@ function blogNavClassifyTemplate(data) {
       types[type].push(temp);
     }
   }
-  console.log(types);
   listHtml = genBlogNavClassifyTemplate(types);
   innerHTML += listHtml;
   blogclassify.innerHTML = innerHTML;
