@@ -2,13 +2,16 @@
 <html>
   <head>
   	<title>编辑页</title>
-    <link rel="stylesheet" type="text/css" href="common.css">
   	<link rel="stylesheet" type="text/css" href="edit.css">
+    <link rel="stylesheet" type="text/css" href="common.css">
   </head>
   <body>
   	<header>
-      <a href="#">BLOG——LANCE</a>
-      <input placeholder="search" id="search" type="text">
+      <div>
+        <a href= "#">ChenHui5416_Blog</a>
+        <a href= "#" class= "resumeicon" title='个人简历，待加入'><span class='icon'></span></a>
+        <input placeholder= "search" id= "search" type= "text">
+      </div>
     </header>
   	<section>
       <aside id="textlist">
@@ -41,9 +44,12 @@
             <textarea name="textcon" rows="35"></textarea>
           </p>
           <p>
-            <input type="file" name="image1" value="图片">
           </p>
           <input class="btn" type="submit" value="发布">
+        </form>
+        <form method="POST" action="/image" id="imageform" enctype="multipart/form-data">
+          <input type="file" name="img" id="imageinput">
+          <input type="submit" class="btn" value="上传图片" name="tt">
         </form>
       </article>
   	</section>

@@ -232,7 +232,6 @@ function commentHandler(event) {
   var url = target.action;
   var reg = /\/([0-9]*)(\/s|\\|$)/;
   var res = reg.exec(url);
-  console.log(res);
   var postStr = 'comment_user=' + target.comment_user.value + 
                 '&comment_email=' + target.comment_email.value + 
                 '&comment_weibo=' + target.comment_weibo.value +

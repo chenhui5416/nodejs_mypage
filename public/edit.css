@@ -1,10 +1,12 @@
 body>section {
-	margin: 20px;
+	margin: 20px auto;
+	width: 80%;
+	max-width: 1080px;
 }
 body>section>aside {
-	width: 20%;
+	width: 30%;
 	float: left;
-	margin-left: 3%; 
+	margin-right: 2%; 
 	background-color: white;
 	box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3);
 	padding: 5px
@@ -12,10 +14,11 @@ body>section>aside {
 body>section>article {
 	width: 65%;
 	float: left;
-	margin-left: 3%; 
 	padding: 5px;
 	background-color: white;
 	box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3);
+	margin-bottom: 20px;
+	padding-bottom: 15px;
 }
 #editform {
 	padding: 10px;
@@ -27,7 +30,7 @@ body>section>article {
 	font-size: 16px;
 }
 #editform textarea {
-	width: 80%;
+	width: 100%;
 	resize: vertical;
 }
 #prelist ul {
@@ -44,3 +47,8 @@ body>section>article {
 #prelist li:hover {
 	color: #aaa5c5;
 }
+#imageform {
+	padding-top: 10px;
+	border-top: 2px solid #eeeeee;
+}
+

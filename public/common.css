@@ -10,7 +10,7 @@ body>header {
 	background-color: #373b44;
 	height: 50px;
 	padding: 10px 20px;	
-	color: white;
+	color: #ffffff;
 	font-size: 2em;
 	font-size: 2rem;
 	font-weight: bold;
@@ -25,7 +25,7 @@ body>header>div {
 	max-width: 1080px;
 	margin: auto;
 }
-body>header>a:hover {
+body>header>div>a:hover {
 	color: #00b4d9;
 }
 #search {

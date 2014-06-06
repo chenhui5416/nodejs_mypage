@@ -97,11 +97,20 @@ app.post('/editpost', multipartMiddleware, function(req, res) {
     if(req.session.user) {
       var hash = (new Date())-0;
       var filename = 'jsons/cn_hash_'+hash+'.md';
-      // dataGen.genImageData(req.files);
+      dataGen.genImageData(req.files);
       dataGen.genBlogdata(req.body, filename);
       dataGen.genCommentdata(hash);
       dataGen.updateBlogs(req.body, hash, function() {
         res.redirect('/');
+      });
+    } else {
+      res.send("<h1>你不是管理员！不给你发帖子！</h1>")
+    }
+});
+app.post('/image', multipartMiddleware, function(req, res) {
+    if(req.session.user) {
+      dataGen.genImageData(req.files, function() {
+        res.send('ok');
       });
     } else {
       res.send("<h1>你不是管理员！不给你发帖子！</h1>")

@@ -10,8 +10,8 @@ var http = require('http');
 var fs = require('fs');
 var accessKey, secrectKey, host, bucket, objectPre;
 accessKey = 'a';
-secrectKey ='a';
-bucket ='a';
+secrectKey = 'a';
+bucket = 'a';
 host = 'bcs.duapp.com';
 objectPre = '/a/';
 
@@ -63,7 +63,7 @@ exports.getImg = function(name, fn) {
   req.end();
 };
 var putImage = function(data, filename) {
-  object = objectPre + filename;
+  object = objectPre +filename;
   var path = bcs.gensign(accessKey, secrectKey, 'MBO', 'PUT', bucket, object);
   var opts = {
     host:host,
@@ -77,7 +77,7 @@ var putImage = function(data, filename) {
   req.setHeader('Content-length', data.length);
   req.write(data);
   req.end();
-}
+};
 exports.genBlogdata = function(blog, filename) {
   object = objectPre + filename;
   var data = blog.textcon;
@@ -118,7 +118,7 @@ exports.genCommentdata = function(hash) {
   req.setHeader('Content-length', buf.length);
   req.write(data);
   req.end();
-}
+};
 
 exports.updateBlogs = function(blog, hash, fn) {
   exports.getFile('blog.json', function(data) {
@@ -180,7 +180,7 @@ exports.updateComment = function(comment, hash, fn) {
     req.write(data);
     req.end();
   });
-}
+};
 
 exports.updateIPS = function(ip) {
   exports.getFile('ips.json', function(data) {
@@ -203,17 +203,19 @@ exports.updateIPS = function(ip) {
     req.write(ips);
     req.end();
   });
-}
+};
 
-exports.genImageData = function(files) {
+exports.genImageData = function(files, fn) {
   for (var key in files) {
     var imageData = files[key];
     var path = imageData.path;
-    console.log(path);
+    var name = 'blogimg/' + imageData.originalFilename;
+    console.log(name);
     fs.readFile(path, function(err, data) {
       if(err) throw err;
-      putImage(data, 'mytest.jpg');
+      putImage(data, name);
+      fn();
       fs.unlink(path);
     });
   }
-}
+};
